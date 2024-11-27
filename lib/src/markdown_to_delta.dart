@@ -92,6 +92,7 @@ class MarkdownToDelta extends Converter<String, Delta>
   final _elementToInlineAttr = <String, ElementToAttributeConvertor>{
     'em': (_) => [Attribute.italic],
     'strong': (_) => [Attribute.bold],
+    'u': (_) => [Attribute.underline],
     'del': (_) => [Attribute.strikeThrough],
     'a': (element) => [LinkAttribute(element.attributes['href'])],
     'code': (_) => [Attribute.inlineCode],

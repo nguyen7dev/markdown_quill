@@ -212,6 +212,18 @@ class DeltaToMarkdown extends Converter<Delta, String>
         }
       },
     ),
+    Attribute.underline.key: _AttributeHandler(
+      beforeContent: (attribute, node, output) {
+        if (node.previous?.containsAttr(attribute.key, attribute.value) != true) {
+          output.write('<u>');  // Open underline tag
+        }
+      },
+      afterContent: (attribute, node, output) {
+        if (node.next?.containsAttr(attribute.key, attribute.value) != true) {
+          output.write('</u>');  // Close underline tag
+        }
+      },
+    ),
   };
 
   final Map<String, EmbedToMarkdown> _embedHandlers = {
